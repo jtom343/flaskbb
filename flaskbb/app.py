@@ -62,6 +62,18 @@ from .forum import views as forum_views  # noqa
 from .management import views as management_views  # noqa
 from .user import views as user_views  # noqa
 
+# Import the Views from Blueprints.  Ex: Below is Blueprints/contact/views.py
+# Also, blueprints/billing/views/billing.py and blueprints/billing/views/stripe_webhook.py
+# Inside each Blueprints/blueprintname is their own forms, models, views, with a Templates folder.
+
+# from snakeeyes.blueprints.contact import contact
+# from snakeeyes.blueprints.user import user
+# from snakeeyes.blueprints.billing import billing
+# from snakeeyes.blueprints.billing import stripe_webhook
+# from snakeeyes.blueprints.bet import bet
+# from snakeeyes.blueprints.user.models import User
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -100,6 +112,14 @@ def create_app(config=None, instance_path=None):
     configure_migrations(app)
     configure_translations(app)
     app.pluggy.hook.flaskbb_additional_setup(app=app, pluggy=app.pluggy)
+
+# DR Palms .  Load blueprints here?
+    # app.register_blueprint(admin)
+    # app.register_blueprint(page)
+    # app.register_blueprint(contact)
+    # app.register_blueprint(user)
+    # app.register_blueprint(billing)
+
 
     return app
 
@@ -183,7 +203,7 @@ def configure_celery_app(app, celery):
 
 def configure_blueprints(app):
     app.pluggy.hook.flaskbb_load_blueprints(app=app)
-
+# DR Palms .  Load blueprints here?
 
 def configure_extensions(app):
     """Configures the extensions."""

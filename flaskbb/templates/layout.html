@@ -72,7 +72,6 @@
                         <!-- navbar left -->
                         <ul class="nav navbar-nav forum-nav">
                             {%- from theme("macros.html") import is_active, topnav with context -%}
-
                             {{ run_hook("flaskbb_tpl_navigation_before") }}
                             {{ topnav(endpoint='forum.index', name=_('Forum'), icon='fa fa-comment', active=active_forum_nav) }}
                             {{ topnav(endpoint='forum.memberlist', name=_('Memberlist'), icon='fa fa-user') }}
@@ -83,7 +82,6 @@
                         <!-- navbar right -->
                         <ul class="nav navbar-nav navbar-right">
                             {% if current_user and current_user.is_authenticated %}
-
                             {{ run_hook("flaskbb_tpl_user_nav_loggedin_before") }}
 
                             <!-- User Menu -->
@@ -96,7 +94,6 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="{{ url_for('forum.topictracker') }}"><span class="fa fa-book fa-fw"></span> {% trans %}Topic Tracker{% endtrans %}</a></li>
                                         <li class="divider"></li>
-
                                         <li><a href="{{ url_for('user.settings') }}"><span class="fa fa-cogs fa-fw"></span> {% trans %}Settings{% endtrans %}</a></li>
                                         {% if current_user|is_admin_or_moderator %}
                                         <li><a href="{{ url_for('management.overview') }}"><span class="fa fa-cog fa-fw"></span> {% trans %}Management{% endtrans %}</a></li>

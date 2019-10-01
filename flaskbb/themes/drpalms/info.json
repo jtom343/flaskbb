@@ -1,0 +1,11 @@
+{
+    "application": "flaskbb",
+    "identifier": "drpalms",
+    "name": "drpalms",
+    "author": "jtom343",
+    "license": "BSD 3-Clause",
+    "website": "https://flaskbb.org",
+    "description": "The default theme for FlaskBB.",
+    "preview": "preview.png",
+    "version": "1.0.0"
+}

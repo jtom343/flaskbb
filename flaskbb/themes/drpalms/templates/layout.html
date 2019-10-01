@@ -9,7 +9,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
-# DRPalms THEME
         <title>
         {% block title %}
             {%- if not page_title -%}
@@ -29,6 +28,31 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
         <!-- emoji -->
         <script src="https://twemoji.maxcdn.com/2/twemoji.min.js?2.5"></script>
+
+<!-- This is DR Palms CSS Styling for Carribe added 12-7-18 -->
+        <style>
+                /* This is the DR Palms CSS */
+          #palmTree{
+            fill: green;
+            text-emphasis-color: green;
+          }
+
+          .flaskbb-title{
+            fill: green;
+            text-decoration-color: green;
+          }
+
+          .icon:hover{
+            /* Old Color DR Palms Edit 12-7-18 */
+            /* fill: #9C27B0; */
+            /* New Color DR Palms edit 12-7-18 */
+            fill: #5827b0;
+          }
+
+          /* End of DRPalms CSS */
+        </style>
+<!-- End of DR Palms Styling -->
+
         {% endblock %}
 
         {# for extra stylesheets. e.q. a template has to add something #}
@@ -50,8 +74,16 @@
                 {% block header %}
                 <div class="flaskbb-header">
                     <div class="flaskbb-meta">
-                        <div class="flaskbb-title">{{ flaskbb_config["PROJECT_TITLE"] }}</div>
-                        <div class="flaskbb-subtitle">{{ flaskbb_config["PROJECT_SUBTITLE"] }}</div>
+                        <!-- <div class="flaskbb-title">{{ flaskbb_config["PROJECT_TITLE"] }}</div> -->
+
+<!-- DR PALMS TITLE -->
+                        <div class="flaskbb-title" id="palmTree">DR Palms<?xml version="1.0" encoding="utf-8"?>
+                          <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px"width="65" height="65" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><path class="icon" href="" d="M75.632,28.458c-2.247-4.869-6.81-8.35-12.17-8.502c-1.928-0.056-3.781,0.284-5.472,0.954  c0.074-1.822-0.213-3.676-0.899-5.467c-1.927-5.006-6.723-8.168-12.059-8.68c-2.362-0.23-4.375,0.139-6.119,0.867  c-0.829,0.339-0.807,1.567,0.046,1.857c3.889,1.321,7.336,4.253,9.423,9.196c0.051,0.138,0.112,0.265,0.164,0.406  c-0.874-1.248-1.956-2.375-3.259-3.313c-4.031-2.9-9.406-3.119-13.939-1.109c-2.698,1.192-4.477,2.867-5.7,4.752  c-0.391,0.599,0.151,1.362,0.847,1.17c4.149-1.096,8.815-0.506,13.375,2.725c2.117,1.504,3.7,3.214,4.832,5.034  c-1.392-1.414-3.283-2.366-5.404-2.579c-3.269-0.295-6.403,1.462-8.199,4.204c-0.724,1.095-1.11,2.183-1.271,3.223  c-0.112,0.714,0.74,1.21,1.292,0.734c1.868-1.625,4.426-2.57,7.628-2.299c2.635,0.225,4.699,1.191,6.221,2.584  c-0.207,0.199-21.018,18.764-21.831,59.09h8.449C29.775,49.433,50.066,37.86,50.072,37.788c1.687,0.993,3.154,2.567,4.169,4.828  c1.325,2.94,1.28,5.686,0.35,7.986c-0.266,0.67,0.475,1.313,1.109,0.973c0.94-0.496,1.836-1.232,2.638-2.286  c1.988-2.611,2.621-6.147,1.25-9.116c-0.9-1.942-2.415-3.405-4.224-4.253c2.103,0.462,4.243,1.389,6.347,2.893  c4.493,3.183,6.611,7.307,6.981,11.507c0.076,0.789,1.063,1.094,1.538,0.459c1.308-1.755,2.241-3.94,2.466-6.789  c0.393-4.95-1.579-9.954-5.649-12.787c-1.321-0.918-2.749-1.569-4.208-1.977c0.142,0.001,0.283,0.003,0.436,0.018  c5.283,0.33,9.168,2.555,11.712,5.731c0.584,0.742,1.823,0.345,1.86-0.601C76.931,32.521,76.605,30.559,75.632,28.458z"/></svg> </div>
+<!-- This is the SVG Graphic Palm Tree -->
+
+                        <!-- <div class="flaskbb-subtitle">{{ flaskbb_config["PROJECT_SUBTITLE"] }}</div> -->
+                        <div class="flaskbb-subtitle">Sharing Insider Knowledge of Traveling and Living in the DR</div>
                     </div>
                 </div>
                 {% endblock %}
@@ -73,12 +105,16 @@
                         <!-- navbar left -->
                         <ul class="nav navbar-nav forum-nav">
                             {%- from theme("macros.html") import is_active, topnav with context -%}
-
                             {{ run_hook("flaskbb_tpl_navigation_before") }}
                             {{ topnav(endpoint='forum.index', name=_('Forum'), icon='fa fa-comment', active=active_forum_nav) }}
-                            {{ topnav(endpoint='forum.memberlist', name=_('Memberlist'), icon='fa fa-user') }}
-                            {{ topnav(endpoint='forum.search', name=_('Search'), icon='fa fa-search') }}
+                            <!-- {{ topnav(endpoint='forum.memberlist', name=_('Memberlist'), icon='fa fa-user') }} -->
+                            {{ topnav(endpoint='forum.search', name=_('Forum Search'), icon='fa fa-search') }}
                             {{ run_hook("flaskbb_tpl_navigation_after") }}
+                <!-- DR Palms additions -->
+                            <li><a href="#"><span class="fa fa-bed fa-fw"></span>Living</a></li>
+                            <li><a href="#"><span class="fa fa-plane fa-fw"></span>Travel</a></li>
+                            <li><a href="#"><span class="fa fa-book fa-fw"></span>Blog</a></li>
+                            <li><a href="#"><span class="fa fa-comment fa-fw"></span>Contact Us</a></li>
                         </ul>
 
                         <!-- navbar right -->
@@ -159,8 +195,10 @@
                             <div class="text-muted text-left">{{ flaskbb_config["PROJECT_COPYRIGHT"] | safe }}</div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="text-muted text-right">powered by <a href="https://flaskbb.org">FlaskBB</a></div>
-                            <div class="text-muted text-right">&copy; 2013 - {{ now.year }} <a href="https://flaskbb.org">FlaskBB Team</a></div>
+                            <!-- <div class="text-muted text-right">powered by <a href="https://flaskbb.org">FlaskBB</a></div>
+                            <div class="text-muted text-right">&copy; 2013 - {{ now.year }} <a href="https://flaskbb.org">FlaskBB Team</a></div> -->
+                            <div class="text-muted text-right"><a href="www.drpalms.com/contact">Contact Us</a></div>
+                            <div class="text-muted text-right"><a href="www.drpalms.com/advertise">Advertise With Us</a></div>
                         </div>
                     </div>
                 </div>
